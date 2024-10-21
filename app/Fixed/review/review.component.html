@@ -1,0 +1,86 @@
+<body class="body">
+    <div class="container mt-4">
+      <!-- Dashboard Header Section -->
+      <div class="dashboard-header text-center mb-4">
+        <h3>Welcome to Your Dashboard</h3>
+        <p>Here you can track your orders, manage customers, and view key performance metrics at a glance.</p>
+      </div>
+    
+      <div class="row d-flex align-items-stretch">
+        <div class="col-md-3">
+          <div class="card text-white bg-primary mb-4">
+            <div class="card-body d-flex flex-column justify-content-between">
+              <h5 class="card-title"><i class="fas fa-shopping-cart"></i> Total Orders</h5>
+              <p class="card-text">{{ metrics.totalOrders }}</p>
+              <div class="progress mt-2">
+                <div class="progress-bar" role="progressbar" 
+                     [style.width]="(metrics.totalOrders / targetOrders) * 100 + '%'" 
+                     [attr.aria-valuenow]="metrics.totalOrders" 
+                     aria-valuemin="0" 
+                     [attr.aria-valuemax]="targetOrders"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-md-3">
+          <div class="card text-white bg-success mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-users"></i> Total Customers</h5>
+              <p class="card-text">{{ metrics.totalCustomers }}</p>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-md-3">
+          <div class="card text-white bg-warning mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-dollar-sign"></i> Total Revenue</h5>
+              <p class="card-text">${{ metrics.totalRevenue }}</p>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-md-3">
+          <div class="card text-white bg-info mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-truck"></i> Total Deliveries</h5>
+              <p class="card-text">{{ metrics.totalDeliveries }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <h3 class="mt-5">Recent Orders Overview</h3>
+      
+      <table class="table table-bordered mt-3">
+        <thead>
+          <tr>
+            <th>Customer Name</th>
+            <th>Order Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of recentOrders">
+            <td>{{ order.customer }}</td>
+            <td>${{ order.amount }}</td>
+            <td [ngStyle]="{'color': getStatusColor(order.status), 'font-weight': 'bold'}">
+              <span class="status-symbol">{{ getStatusSymbol(order.status) }}</span>{{ order.status }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    
+      <footer class="mt-5">
+        <p class="text-center">&copy; 2024 Food World Delivery. Bringing Delicious Meals to Your Doorstep.</p>
+        <p class="text-center">
+          Follow us on:
+          <a href="https://twitter.com/YourCompany" target="_blank">Twitter</a> |
+          <a href="https://facebook.com/YourCompany" target="_blank">Facebook</a> |
+          <a href="https://instagram.com/YourCompany" target="_blank">Instagram</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+  

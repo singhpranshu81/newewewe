@@ -1,0 +1,87 @@
+.body {
+    background-color: #000; /* Black background for the entire body */
+    color: #ffffff; /* Default text color for better visibility */
+}
+
+.dashboard-header {
+    background-color: #333; /* Dark grey for the header */
+    padding: 20px;
+    border-radius: 8px;
+    color: #ffffff; /* White text for header */
+}
+
+.card {
+    border-radius: 8px;
+    margin-bottom: 10px; /* Space between cards */
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #333; /* Dark grey for footer */
+    padding: 10px 0;
+    color: #ffffff; /* White text for footer */
+}
+
+footer a {
+    color: #007bff; /* Bright blue for links */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.card {
+    border: none; /* Remove default card border */
+}
+
+/* Adjust card colors for better visibility on black background */
+.card.bg-primary {
+    background-color: #0056b3 !important; /* Darker primary color */
+}
+
+.card.bg-success {
+    background-color: #218838 !important; /* Darker success color */
+}
+
+.card.bg-warning {
+    background-color: #d39e00 !important; /* Darker warning color */
+}
+
+.card.bg-info {
+    background-color: #138496 !important; /* Darker info color */
+}
+
+/* Optional: Adjust text color for better visibility */
+.card .card-title, .card .card-text {
+    color: #ffffff; /* White text for contrast */
+}
+
+
+.table {
+    color: #ffffff; /* White text for table */
+}
+
+.table thead th {
+    background-color: #444; /* Darker background for table header */
+}
+
+.table tbody tr {
+    background-color: #222; /* Slightly lighter dark for rows */
+}
+
+.table tbody tr:hover {
+    background-color: #555; /* Highlight row on hover */
+}
+
+.table tbody td {
+    color: #ffffff; /* White text for table data */
+}
+
+.table tbody td[ngStyle] {
+    font-weight: bold; /* Bold text for status */
+}

@@ -1,0 +1,118 @@
+.body {
+    margin: 0;
+    height: 100vh;
+    background-image: url("../../../assets/back3.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.about-us {
+    max-width: 1000px;
+    margin: 50px;
+    padding: 30px;
+    text-align: center;
+    color: white;
+    margin-bottom: 150px;
+
+}
+
+h1 {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: white;
+}
+
+
+p {
+    line-height: 1.5;
+    margin: 15px 0;
+    font-size: 1.5rem;
+    font-family: cursive;
+}
+
+.team {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.member {
+    text-align: center;
+    margin: 15px;
+    transition: transform 0.2s;
+}
+
+
+
+.member img {
+    border-radius: 50%;
+    border: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100px;
+    height: 100px;
+}
+
+h3 {
+    margin-top: 10px;
+    font-size: 1.4em;
+    color: white
+}
+
+@media (max-width: 1200px) {
+    h1 {
+        font-size: 3em;
+    }
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .about-us {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .member img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 600px) {
+    .team {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    .member {
+        margin: 10px;
+    }
+
+    .member img {
+        width: 70px;
+        height: 70px;
+    }
+}

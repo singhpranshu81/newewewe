@@ -1,0 +1,72 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+</head>
+
+<div class="body"> 
+  <div class="login-container">
+    <p class="login-text">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i  (click)="goTOAdminLogin()" class="fa fa-lock fa-stack-1x"></i>
+      </span>
+    </p>
+    <form *ngIf="!isForgotPassword && !isResetPassword" (ngSubmit)="goToDash()" #loginForm="ngForm">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" required [(ngModel)]="loginDetails.userName" name="userName" placeholder="Enter your userName"/>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required [(ngModel)]="loginDetails.password" name="password" placeholder="Enter your Password" />
+      </div>
+      <button type="submit" [disabled]="!loginForm.form.valid">Login</button>
+      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+      <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+      <a href="#" class="login-forgot-pass" (click)="toggleForgotPassword($event)">Forgot password?</a>
+    </form>
+
+    <div *ngIf="isForgotPassword" class="overlay" (click)="toggleForgotPassword($event)">
+      <div class="forgot-password-modal" (click)="$event.stopPropagation()">
+        <h3>Reset Password</h3>
+        <form  #forgotPasswordForm="ngForm">
+          <div>
+            <label for="forgotEmail">Email:</label>
+            <input type="email" id="forgotEmail" required [(ngModel)]="forgotPasswordModel.email" name="forgotEmail" placeholder="Enter your Email"/>
+          </div>
+          
+          <div *ngIf="isEmailSent">
+          <label for="otp">Enter Otp:</label>
+          <input  type="number" [(ngModel)]="verifyotp" name="otp" placeholder="Enter Otp" />
+           </div>
+          <button type="submit" *ngIf="gya" (click)="sendOtp()" [disabled]="!forgotPasswordForm.form.valid">Send Otp</button>
+          <button type="submit" *ngIf="!gya" (click)="verifyOtp()" [disabled]="!forgotPasswordForm.form.valid">Verify Otp</button>
+          <p *ngIf="forgotErrorMessage" class="error">{{ forgotErrorMessage }}</p>
+          <a href="#" class="login-back" (click)="toggleForgotPassword($event)">Back to Login</a>
+          <a href="#" class="login-reset" (click)="toggleResetPassword($event)">Reset Password</a>
+        </form>
+      </div>
+    </div>
+
+    <div *ngIf="isResetPassword" class="overlay" (click)="toggleResetPassword($event)">
+      <div class="forgot-password-modal" (click)="$event.stopPropagation()">
+        <h3>Enter New Password</h3>
+        <form (ngSubmit)="onResetPassword()" #resetPasswordForm="ngForm">
+          <div>
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" required [(ngModel)]="resetPasswordModel.newPassword" name="newPassword" placeholder="Enter your New Password"/>
+          </div>
+          <div>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" required [(ngModel)]="resetPasswordModel.confirmPassword" name="confirmPassword" placeholder="Confirm your New Password"/>
+          </div>
+          <button type="submit" [disabled]="!resetPasswordForm.form.valid">Reset Password</button>
+          <p *ngIf="resetErrorMessage" class="error">{{ resetErrorMessage }}</p>
+          <a href="#" class="login-back" (click)="toggleResetPassword($event)">Back to Login Page</a>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>

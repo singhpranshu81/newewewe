@@ -1,0 +1,117 @@
+<div class="body">
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
+       <div id="mySidenav" class="sidenav">
+          <span style="font-size:20px;cursor:pointer;color: black;float: right; " (click)="toggleNav()"> </span>
+          <a
+          (click)="goToAddFood()"
+          *ngIf="isAdmin"
+          >Add Food</a
+        >
+    <a
+    (click)="goToAddCuisine()"
+    *ngIf="isAdmin"
+    >Add Cuisine</a
+  >
+  <a
+  (click)="goToDeleteCuisine()"
+  *ngIf="isAdmin"
+  >Delete Cuisine</a
+>
+    <a
+    (click)="goToAddFood()"
+    *ngIf="!isAdmin"
+    >Your Orders</a
+  >
+  <a
+  (click)="goToUpdateProfile()"
+  *ngIf="!isAdmin"
+  >Update Profile</a
+>
+  <a
+  (click)="goToReview()"
+  *ngIf="isAdmin"
+  >Review App</a
+>
+
+        </div>
+        <div id="main" class="main-content">
+      <span style="font-size:20px;cursor:pointer;color: whitesmoke;" (click)="toggleNav()">&#9776; Menu</span>
+    </div>
+      </div>
+      <div class="col py-3">
+        <div class="container">
+          <div class="btn-group mb-3" role="group" aria-label="Category buttons">
+             <button   (click)="searchQuery = null"   class="btn btn-secondary me-2">All</button>
+             <button
+              *ngFor="let category of category"
+              type="button"
+              class="btn btn-secondary me-2"
+            (click)="searchQuery = category.categoryName"
+            >
+              {{ category.categoryName }}
+            </button>
+          </div>
+
+          <div style="margin-left: 950px;" class="col-md-4 ">
+            <input
+                type="text"
+                class="form-control"
+                placeholder="Search Food..."
+               [(ngModel)]="khojo"
+              name="khojo"
+            />
+        </div>
+
+          <div class="row">
+            <div *ngFor="let khana of food  | categorySearch:searchQuery | searchByName:khojo" class="col-md-2 mb-4">
+              <div class="card movie-card">
+                <img
+                  src="../../../assets/food2.jpg"
+                  class="card-img-top movie-image"
+                  alt="Joker"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">{{ khana.foodId }}</h5>
+                  <p class="card-text">{{ khana.foodName }}</p>
+                  <p class="card-text">{{ khana.category.categoryName }}</p>
+                  <a
+                    (click)="addToCart(khana)"
+                    *ngIf="!isAdmin"
+                    class="btn btn-danger btn-sm cart"
+                    >Add to Cart</a
+                  >
+                  <a
+                    (click)="deleteFood(khana.foodId)"
+                    *ngIf="isAdmin"
+                    class="btn btn-danger btn-sm cart"
+                    ><i class="fa fa-trash"></i></a
+                  >
+                  <a
+                  (click)="disableFood(khana)"
+                  *ngIf="isAdmin"
+                  style="margin-left: 7px;margin-right: 2px;"
+                  class="btn btn-danger btn-sm cart"
+                  ><span *ngIf="getTheStatus(khana)">Disable</span> <span *ngIf="!getTheStatus(khana)">Enable</span></a
+                >
+                
+                  <a
+                    *ngIf="isAdmin"
+                    [routerLink]="['/update',khana.foodId]"
+                    
+                    class="btn btn-danger btn-sm cart"
+                    ><i class="fas fa-edit"></i></a
+                  >
+                </div>
+              </div>
+             
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

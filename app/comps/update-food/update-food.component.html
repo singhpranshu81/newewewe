@@ -1,0 +1,39 @@
+<div class="body">
+    <div class="register-container">
+      <h2>Update</h2>
+      <form (ngSubmit)="goToDash()" #registerForm="ngForm">
+        <div>
+          <label for="foodName">Food Name:</label>
+          <input [(ngModel)]="food.foodName" type="text" id="foodName"  name="foodName" value={{food.foodName}} />
+        </div>
+        
+          <div>
+            <label for="quantity">Quantity:</label>
+            <input [(ngModel)]="food.quantity" type="number" id="quantity"  name="quantity" value={{food.quantity}} />
+          </div>
+
+                
+          <div>
+            <label for="price">Price:</label>
+            <input [(ngModel)]="food.price" type="number" id="price"  name="price" value={{food.price}} />
+          </div>
+              
+          <div>
+            <label for="isDisable">IsDisable:</label>
+            <input  [(ngModel)]="food.isDisable" type="text" id="isDisable"  name="isDisable" value={{food.isDisable}} />
+          </div>
+             
+          <div>
+            <label for="description">Description:</label>
+            <input [(ngModel)]="food.description" type="text" id="description"  name="description" value={{food.description}} />
+          </div>
+          <div>
+            <label for="url">URL:</label>
+            <input [(ngModel)]="food.url" type="text" id="url"  name="url" value={{food.url}}/>
+          </div>
+        <button type="submit" [disabled]="!registerForm.form.valid">Update Food</button>
+     
+
+      </form>
+    </div>
+  </div>
